@@ -1,3 +1,4 @@
+/* eslint-disable*/
 <template>
   <div id="app">
     <div id="nav">
@@ -30,3 +31,4 @@
   color: #42b983;
 }
 </style>
+/* eslint-enable*/
