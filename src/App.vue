@@ -1,13 +1,31 @@
 /* eslint-disable*/
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
+    <div ></div>
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  components: {
+
+  },
+  computed: {
+    helloMessage: {
+      get (): string {
+        return this.$store.state.user;
+      }
+    }
+  }
+
+})
+</script>
 
 <style>
 #app {
