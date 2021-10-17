@@ -1,33 +1,36 @@
 /* eslint-disable*/
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <div ></div>
-    <router-view/>
+    <Header/>
+
+    <router-view />
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
+import Header from "./components/Header.vue"
 
 export default Vue.extend({
-  components: {
-
-  },
+  components: { Header },
   computed: {
     helloMessage: {
-      get (): string {
+      get(): string {
         return this.$store.state.user;
       }
     }
   }
-
-})
+});
 </script>
 
 <style>
+* {
+  text-decoration: none !important;
+}
+
+.link {
+  color: white;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,5 +51,7 @@ export default Vue.extend({
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+
 </style>
 /* eslint-enable*/

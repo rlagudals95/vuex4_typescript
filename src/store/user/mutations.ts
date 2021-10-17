@@ -11,7 +11,7 @@ export const mutations: MutationTree<UserState> = {
     state.username = payload;
   },
   [UserMutations.SET_CATS_FACTS](state, payload: string) {
-    state.cats = payload;
+    state.email = payload;
   }
 
 

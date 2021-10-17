@@ -1,19 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld :msg="username"/>
+
+
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+
+
 import { UserMutations } from '@/store/user/mutations'
+import { config }  from '../config'
+import axios from 'axios'
+
 
 export default Vue.extend({
   name: 'Home',
   components: {
-    HelloWorld
+
   },
    computed: {
     helloMessage: {
@@ -31,10 +35,18 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.$store.dispatch("loadApiResult");
-    setTimeout(()=> {
-      this.username = "change name"
-    },3000)
+    // this.$store.dispatch("loadApiResult");
+    // setTimeout(()=> {
+    //   this.username = "change name"
+    // },3000);
+    console.log(`${config.LocalbaseUrlTest}user/2`);
+    axios.get(`${config.LocalbaseUrlTest}user/2`).then((res)=> {
+      console.log('테스트 데이터 : ',res);
+    }).catch((error)=> {
+      console.log("에러발생 : ",error)
+    })
+
+
   },
    created() {
     setTimeout(()=> {
