@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-
+    메인화면
 
   </div>
 </template>

@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "header",
+  name: "nav-bar",
   methods: {
     moveToLogin(){
        this.$router.push({name: 'Login'})
