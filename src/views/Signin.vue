@@ -45,7 +45,8 @@ export default {
         alert("비밀번호를 확인해 주세요!");
         return
       }
-      axios.post(`${config.LocalbaseUrlTest}/auth/join`, {
+      console.log("요청 url : ",`${config.LocalbaseUrlTest}/join`)
+      axios.post(`${config.LocalbaseUrlTest}/join`, {
           username: this.singup.username,
           email: this.singup.email,
           password: this.singup.password

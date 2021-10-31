@@ -10,9 +10,8 @@
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto ">
+        <!-- <b-navbar-nav class="ml-auto ">
             <b-nav-item-dropdown right >
-              <!-- Using 'button-content' slot -->
               <template #button-content >
                 <em>User</em>
               </template>
@@ -20,7 +19,7 @@
               <b-dropdown-item href="#">login</b-dropdown-item>
               <b-dropdown-item href="#">sign in</b-dropdown-item>
             </b-nav-item-dropdown>
-        </b-navbar-nav>
+        </b-navbar-nav> -->
       </b-collapse>
     </b-navbar>
   </div>
