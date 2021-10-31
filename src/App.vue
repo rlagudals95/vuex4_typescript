@@ -10,10 +10,10 @@
 import Vue from "vue";
 import Header from "./components/Header.vue"
 import axios from "axios"
-axios.defaults.baseURL = 'http://localhost:8000'; //서버주소
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-axios.defaults.headers.common['Authorization'] = localStorage.getItem("Authorization");
+//axios.defaults.baseURL = 'http://localhost:8000'; //서버주소
+//axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+//axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+//axios.defaults.headers.common['Authorization'] = localStorage.getItem("Authorization");
 
 export default Vue.extend({
   components: { Header },

@@ -1,8 +1,7 @@
 export interface UserState {
 
   username: string;
-  email: string;
-  lastLogin: Date;
+  isLogin: boolean;
 }
 
 export interface CatState {

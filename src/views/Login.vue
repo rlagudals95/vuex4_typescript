@@ -21,9 +21,7 @@
 <script>
 import axios from "axios";
 import { config } from "../config";
-axios.defaults.baseURL = 'http://localhost:8000'; //서버주소
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+import { UserMutations } from '@/store/user/mutations'
 
 
 export default {
@@ -32,13 +30,13 @@ export default {
     return {
         username: "",
         password: "",
+
     };
   },
   methods: {
-
     login() {
       axios
-        .post(`/login`,
+        .post(`${config.LocalbaseUrlTest}/login`,
            {
              username : this.username,
              password : this.password
@@ -46,15 +44,20 @@ export default {
         )
         .then(res => {
           console.log('로그인 response : ',res)
+          this.$router.push({name: 'Home'})
           localStorage.setItem("Authorization", res.headers.authorization);
+          this.$store.commit(UserMutations.SET_USERNAME,this.username);
         })
         .catch(Error => {
           alert("아이디 혹은 비밀번호를 확인해 주세요!")
           console.log("로그인에러", Error);
         });
-    }
-  }
+    },
+  },
+
+
 };
+
 </script>
 
 <style>

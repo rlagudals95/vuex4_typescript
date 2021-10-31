@@ -7,10 +7,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
-
-import { UserMutations } from '@/store/user/mutations'
-import { config }  from '../config'
 import axios from 'axios'
 
 
@@ -19,39 +15,58 @@ export default Vue.extend({
   components: {
 
   },
-   computed: {
-    helloMessage: {
-      get (): string {
-        return this.$store.state.helloMessage; // store에 import한 module 가져옴
-      }
-    },
-    username : {
-      get ():string {
-        return this.$store.getters.getUsername; // store에 import한 getters 가져옴
-      },
-      set (value:string):void {
-        this.$store.commit(UserMutations.SET_USERNAME,value); // mounted에서 실행한 결과 반영
-      }
+  methods:{
+    getBoard () {
+    axios
+      .get('http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/?serviceKey=1RlCyzGPfgyRhE5EiBnlCiD%2Fujr%2FWAvQ2JKy3%2FjWbYpfVI6sdY0XUJ3LQGaEaf8ZfuaWa8Dq0jiaohH4QYunvA%3D%3D&RequestTime=20100810:23003422&seq=12341',
+        { headers: {'Content-Type': 'text/xml'}}
+       )
+      .then((res)=> {
+        console.log('전시회 정보 : ',res);
+      }).catch((err) => {
+        console.log('전시회 정보 에러 : ', err);
+      })
     }
   },
-  mounted() {
-    // this.$store.dispatch("loadApiResult");
-    // setTimeout(()=> {
-    //   this.username = "change name"
-    // },3000);
-    console.log(`${config.LocalbaseUrlTest}user/2`);
-    axios.get(`${config.LocalbaseUrlTest}user/2`).then((res)=> {
-      console.log('테스트 데이터 : ',res);
-    }).catch((error)=> {
-      console.log("에러발생 : ",error)
-    })
 
-
-  },
-   created() {
-    setTimeout(()=> {
-      this.username = "change name2"
-    },6000)
+  created() {
+    this.getBoard();
   }
+
+
+  //  computed: {
+  //   helloMessage: {
+  //     get (): string {
+  //       return this.$store.state.helloMessage; // store에 import한 module 가져옴
+  //     }
+  //   },
+  //   username : {
+  //     get ():string {
+  //       return this.$store.getters.getUsername; // store에 import한 getters 가져옴
+  //     },
+  //     set (value:string):void {
+  //       this.$store.commit(UserMutations.SET_USERNAME,value); // mounted에서 실행한 결과 반영
+  //     }
+  //   }
+  // },
+  // mounted() {
+  //   // this.$store.dispatch("loadApiResult");
+  //   // setTimeout(()=> {
+  //   //   this.username = "change name"
+  //   // },3000);
+  //   console.log(`${config.LocalbaseUrlTest}user/2`);
+  //   axios.get(`${config.LocalbaseUrlTest}user/2`).then((res)=> {
+  //     console.log('테스트 데이터 : ',res);
+  //   }).catch((error)=> {
+  //     console.log("에러발생 : ",error)
+  //   })
+
+
+  // },
+  //  created() {
+  //   setTimeout(()=> {
+  //     this.username = "change name2"
+  //   },6000)
+  // }
 })
 </script>
