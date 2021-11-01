@@ -18,7 +18,7 @@ export default Vue.extend({
   methods:{
     getBoard () {
     axios
-      .get('http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/?serviceKey=1RlCyzGPfgyRhE5EiBnlCiD%2Fujr%2FWAvQ2JKy3%2FjWbYpfVI6sdY0XUJ3LQGaEaf8ZfuaWa8Dq0jiaohH4QYunvA%3D%3D&RequestTime=20100810:23003422&seq=12341',
+      .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=301c0d0a-a6e7-4308-81ee-9c5c76a9a73f',
         { headers: {'Content-Type': 'text/xml'}}
        )
       .then((res)=> {
