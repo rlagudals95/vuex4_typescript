@@ -18,7 +18,11 @@ export default Vue.extend({
 
 
     axios
+<<<<<<< HEAD
       .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=6f1e1f5d-f25e-44cd-8291-f6d13540e98f&numOfRows=10&pageNo=1',
+=======
+      .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=301c0d0a-a6e7-4308-81ee-9c5c76a9a73f',
+>>>>>>> a782bce25c64f4362fcba5b75ab289b0d732c15f
         { headers: {'Content-Type': 'text/xml'}}
        )
       .then((res)=> {
