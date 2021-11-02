@@ -1,24 +1,24 @@
 <template>
   <div class="home">
-    메인화면
-
+    <Card/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-
+import Card from '../components/Card.vue'
 
 export default Vue.extend({
   name: 'Home',
-  components: {
-
-  },
+  components: { Card },
   methods:{
     getBoard () {
+
+
+
     axios
-      .get('http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/?serviceKey=1RlCyzGPfgyRhE5EiBnlCiD%2Fujr%2FWAvQ2JKy3%2FjWbYpfVI6sdY0XUJ3LQGaEaf8ZfuaWa8Dq0jiaohH4QYunvA%3D%3D&RequestTime=20100810:23003422&seq=12341',
+      .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=6f1e1f5d-f25e-44cd-8291-f6d13540e98f&numOfRows=10&pageNo=1',
         { headers: {'Content-Type': 'text/xml'}}
        )
       .then((res)=> {
