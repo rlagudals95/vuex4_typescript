@@ -1,8 +1,74 @@
 <template>
   <div class="home">
-    메인화면
 
-  </div>
+      <!-- <b-card-group deck>
+        <div v-for="(board, index) in this.boardList" v-bind:key="board">
+        <b-card title="Title" :img-src="board.url" img-alt="Image" img-top>
+          <b-card-text>
+            {{board.description}}
+          </b-card-text>
+          <template #footer>
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </template>
+        </b-card>
+        </div>
+      </b-card-group> -->
+       <v-card
+          elevation="24"
+          max-width="444"
+          class="mx-auto"
+        >
+          <v-system-bar lights-out></v-system-bar>
+          <v-carousel
+            :continuous="false"
+            :cycle="cycle"
+            :show-arrows="false"
+            hide-delimiter-background
+            delimiter-icon="mdi-minus"
+            height="300"
+          >
+            <v-carousel-item
+              v-for="(slide, i) in slides"
+              :key="i"
+            >
+              <v-sheet
+                :color="colors[i]"
+                height="100%"
+                tile
+              >
+                <v-row
+                  class="fill-height"
+                  align="center"
+                  justify="center"
+                >
+                  <div class="text-h2">
+                    {{ slide }} Slide
+                  </div>
+                </v-row>
+              </v-sheet>
+            </v-carousel-item>
+          </v-carousel>
+          <v-list two-line>
+            <v-list-item>
+              <v-list-item-avatar>
+                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title>John Leider</v-list-item-title>
+                <v-list-item-subtitle>Author</v-list-item-subtitle>
+              </v-list-item-content>
+              <v-list-item-action>
+                <v-switch
+                  v-model="cycle"
+                  label="Cycle Slides"
+                  inset
+                ></v-switch>
+              </v-list-item-action>
+            </v-list-item>
+          </v-list>
+        </v-card>
+    </div>
+
 </template>
 
 <script lang="ts">
@@ -15,14 +81,36 @@ export default Vue.extend({
   components: {
 
   },
+  data() {
+    return {
+      boardList:null,
+      test: 'test',
+      colors: [
+          'green',
+          'secondary',
+          'yellow darken-4',
+          'red lighten-2',
+          'orange darken-1',
+        ],
+        cycle: false,
+        slides: [
+          'First',
+          'Second',
+          'Third',
+          'Fourth',
+          'Fifth',
+        ],
+    }
+  },
   methods:{
     getBoard () {
     axios
       .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=301c0d0a-a6e7-4308-81ee-9c5c76a9a73f',
-        { headers: {'Content-Type': 'text/xml'}}
+        { headers: {'Content-Type': 'json'}}
        )
       .then((res)=> {
         console.log('전시회 정보 : ',res);
+        this.boardList = res.data.response.body.items.item
       }).catch((err) => {
         console.log('전시회 정보 에러 : ', err);
       })
