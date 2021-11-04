@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+<<<<<<< HEAD
 
       <!-- <b-card-group deck>
         <div v-for="(board, index) in this.boardList" v-bind:key="board">
@@ -74,39 +75,20 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-
+import Card from '../components/Card.vue'
 
 export default Vue.extend({
   name: 'Home',
-  components: {
-
-  },
-  data() {
+  data () {
     return {
-      boardList:null,
-      test: 'test',
-      colors: [
-          'green',
-          'secondary',
-          'yellow darken-4',
-          'red lighten-2',
-          'orange darken-1',
-        ],
-        cycle: false,
-        slides: [
-          'First',
-          'Second',
-          'Third',
-          'Fourth',
-          'Fifth',
-        ],
+      boardList : ""
     }
   },
   methods:{
     getBoard () {
     axios
-      .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=301c0d0a-a6e7-4308-81ee-9c5c76a9a73f',
-        { headers: {'Content-Type': 'json'}}
+      .get('http://api.kcisa.kr/openapi/service/rest/other/getSEMN5601?serviceKey=6f1e1f5d-f25e-44cd-8291-f6d13540e98f&numOfRows=10&pageNo=1',
+        { headers: {'Content-Type': 'text/xml'}}
        )
       .then((res)=> {
         console.log('전시회 정보 : ',res);
